@@ -6,6 +6,7 @@
 */
 import java.awt.*;
 import java.awt.event.*;
+import java.io.*;
 class JW extends Frame implements ActionListener{
 	Frame f; 
 	static int i=1,sumA,sumB;
@@ -17,6 +18,8 @@ class JW extends Frame implements ActionListener{
 	
 	JW(){			
 		this.f = new Frame(fn);
+		Image icon = Toolkit.getDefaultToolkit().getImage("icons/quiz.png");
+		f.setIconImage(icon);
 		questionChoose();
 	}
 	
@@ -34,22 +37,21 @@ class JW extends Frame implements ActionListener{
 				 op2="B. Bring up his/her behavior and ask him/her how s/he felt the argument had affected our relationship.";
 				 questionFrame();
 				 break;
-	/*		else if(i==3){		*/
+	
 			case 3:
 				s1="3)If a friend began to avoid me and act in an aloof and withdrawn manner, I would:";
 				op1="A. Tell him/her about his/her behavior and suggest that s/he tell me what was on his/her mind";
 				op2="B. Follow his/her lead and keep our contact brief and aloof since that seems to be what s/he wants.";
 				questionFrame();
 				break;
-	//		}
-	//		else if(i==4){
+	
 			case 4:
 				s1="4)If two of my friends and I were talking and one of my friends slipped and brought up a personal problem of mine that involved the other friend, of which s/he was not yet aware, I would:";
 				op1="A. Change the subject and signal my friend to do the same.";
 				op2="B. Fill my uniformed friend in on what the other friend was talking about and suggest that we go into it later.";
 				questionFrame();
 				break;
-	//		}
+
 			case 5:
 				s1="5)If a friend of mine were to tell me that, in his/her opinion, I was doing things that made me less effective than I might be in social situations, I would:";
 				op1="A. Ask him/her to spell out or describe what s/he has observed and suggest changes I might make.";
@@ -91,8 +93,7 @@ class JW extends Frame implements ActionListener{
 		}
 		
 		return f;
-	}
-	
+	}		
 	private Frame questionFrame() {
 		this.f.setTitle("Johari Window Questionnaire " + i);
 		lNote = new Label("How much you satisfied with Statement A(Full=5;Not=0)");
@@ -118,8 +119,8 @@ class JW extends Frame implements ActionListener{
 		b1.addActionListener(this);
 		b2.addActionListener(this);
 	//	b1.addKeyListener(this);
-	//	f.setBackground(Color.GREEN);
-
+		f.setBackground(Color.PINK);
+	
 		f.add(lNote);
 		f.add(l1);	f.add(l2);	f.add(l3);	f.add(l4);	f.add(l5); f.add(l6);//Label
 		f.add(tf1);
@@ -141,20 +142,24 @@ class JW extends Frame implements ActionListener{
 	private Frame ThanksFrame(){
 		this.f.setTitle("Thank you Frame");
 		l1 = new Label("Thanks for giving Quiz");
-		l1.setBounds(50,50,800,50);
+		l1.setBounds(50,50,700,50);
+		l2 = new Label("Scored in A: "+Integer.toString(sumA));
+		l2.setBounds(100,100,350,20);
+		l3 = new Label("Scored in B: "+Integer.toString(sumB));
+		l3.setBounds(100,125,350,20);
 		b3 = new Button("Close");
 		b3.setBounds(200,200,50,50);
 		b3.addActionListener(this);
 		f.add(b3);	
 
-		f.add(l1);
+		f.add(l1);	f.add(l2);	f.add(l3);
 		f.addWindowListener(new WindowEventListener());
-		f.setLayout(null);
-		f.setBounds(50,80,900,600);
-		f.setSize(1300,600);
-		f.setVisible(true);
-	//	b2.setVisible(false);
 		
+		f.setLayout(null);
+		f.setBounds(50,80,500,600);
+	//	f.setSize(1300,600);
+		f.setVisible(true);
+	
 		return f;	
 	}
 	
@@ -196,12 +201,14 @@ class JW extends Frame implements ActionListener{
 			this.i++;
 			questionChoose();
 		}
+		else if(e.getSource()==b3){
+			System.exit(0);
+		}
 	}
 	
-	//	public void keyPressed(KeyEvent e) {
-	//        if (e.getKeyCode()==KeyEvent.VK_ENTER){
+		
 	
-	public static void main(String[] args) {
+	public static void main(String[] args)throws NumberFormatException{
 		new JW();
 	}
 }
