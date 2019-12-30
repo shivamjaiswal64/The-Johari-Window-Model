@@ -59,13 +59,13 @@ class JW extends Frame implements ActionListener{
 				questionFrame();
 				break;	
 			case 6:
-				s1="If one of my friends aspired to an office in our organization for which I felt s/he was unqualified, and if s/he had been tentatively assigned to that position by the leader of our group, I would:";
+				s1="6)If one of my friends aspired to an office in our organization for which I felt s/he was unqualified, and if s/he had been tentatively assigned to that position by the leader of our group, I would:";
 				op1="A. Not mention my misgivings to either my friend or the leader of our group and let them handle it in their own way. ";
 				op2=" B. Tell my friend and the leader of our group of my misgivings and then leave the final decision up to them";
 				questionFrame();
 				break;			
 			case 7:
-				s1="If I felt that one of my friends was being unfair to me and his/her other friends, but none of them had mentionedanything about it, I would:";
+				s1="7)If I felt that one of my friends was being unfair to me and his/her other friends, but none of them had mentionedanything about it, I would:";
 				op1="A. Ask several of these people how they perceived the situation to see if they felt s/he was being unfair.";
 				op2="B. Not ask the others how they perceived our friend, but wait for them to bring it up with me. ";
 				questionFrame();
@@ -93,7 +93,8 @@ class JW extends Frame implements ActionListener{
 		}
 		
 		return f;
-	}		
+	}
+		
 	private Frame questionFrame() {
 		this.f.setTitle("Johari Window Questionnaire " + i);
 		lNote = new Label("How much you satisfied with Statement A(Full=5;Not=0)");
